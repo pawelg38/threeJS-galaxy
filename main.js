@@ -36,11 +36,22 @@ runBtn.onmouseenter = () => {
 }
 runBtn.onmouseleave = () => {
   run = false;
+  i = 0;
 }
 
 
+var i = 0;
+function prepareToStart() {
+  i++;
+  coneMesh.material.map.offset.y -= 0.0005;
+  coneMesh.scale.y -= 0.0099;
+}
 function animate() {
-  if(run) {}
+  if(run) {
+    if (i < 100) {
+      prepareToStart();
+    }
+  }
 
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
