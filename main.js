@@ -98,7 +98,7 @@ function mainLoop() {
     prepareToStop();
   }
 
-  requestAnimationFrame(animate);
+  requestAnimationFrame(mainLoop);
   renderer.render(scene, camera);
 }
 mainLoop();
