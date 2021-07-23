@@ -37,19 +37,30 @@ runBtn.onmouseenter = () => {
 runBtn.onmouseleave = () => {
   run = false;
   i = 0;
+  j = 0;
 }
 
 
 var i = 0;
+var j = 0;
 function prepareToStart() {
   i++;
   coneMesh.material.map.offset.y -= 0.0005;
   coneMesh.scale.y -= 0.0099;
 }
+function start() {
+  j++;
+  coneMesh.scale.y += 0.4;
+}
 function animate() {
   if(run) {
     if (i < 100) {
       prepareToStart();
+    }
+    else {
+      if (j < 75) {
+        start();
+      }
     }
   }
 
