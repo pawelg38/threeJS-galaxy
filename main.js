@@ -29,6 +29,8 @@ coneMesh.position.z -= 2;
 scene.add(coneMesh);
 
 
+const runBtn = document.getElementById('runBtn');
+
 
 function animate() {
   requestAnimationFrame(animate);
