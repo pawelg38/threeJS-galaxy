@@ -56,7 +56,31 @@ function keepGoing() {
   coneMesh.material.map.offset.x += 0.004;
   coneMesh.material.map.offset.y += 0.005;
 };
-function animate() {
+function prepareToStop() {
+  if ((coneMesh.scale.y - 0.5 > 1)||(coneMesh.scale.y + 0.5 < 1)||(coneMesh.material.map.offset.y < 0)) {
+    if (coneMesh.scale.y - 0.5 > 1) {
+      coneMesh.scale.y -= 0.5;
+    }
+    if (coneMesh.scale.y + 0.1 < 1) {
+      coneMesh.scale.y += 0.1;
+    }
+    if (coneMesh.material.map.offset.y < 0) {
+      coneMesh.material.map.offset.y += 0.001;
+    }
+  }
+  else {
+    if ((coneMesh.scale.y !== 1) || (coneMesh.material.map.offset.y !== 0)) {
+      resetValues();
+    }
+  }
+}
+function resetValues() {
+  i = 0;
+  j = 0;
+  coneMesh.scale.y = 1;
+  coneMesh.material.map.offset.y = 0;
+}
+function mainLoop() {
   if(run) {
     if (i < 100) {
       prepareToStart();
@@ -70,8 +94,11 @@ function animate() {
       }
     }
   }
+  else {
+    prepareToStop();
+  }
 
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 }
-animate();
+mainLoop();
