@@ -29,10 +29,19 @@ coneMesh.position.z -= 2;
 scene.add(coneMesh);
 
 
+var run = false;
 const runBtn = document.getElementById('runBtn');
+runBtn.onmouseenter = () => {
+  run = true;
+}
+runBtn.onmouseleave = () => {
+  run = false;
+}
 
 
 function animate() {
+  if(run) {}
+
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 }
