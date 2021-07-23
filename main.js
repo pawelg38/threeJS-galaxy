@@ -9,3 +9,9 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(1);
+
+
+const pointLight = new THREE.PointLight(0Xffffff);
+pointLight.position.set(0,0,0);
+const ambientLight = new THREE.AmbientLight(0xffffff);
+scene.add(pointLight, ambientLight);
