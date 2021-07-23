@@ -52,6 +52,10 @@ function start() {
   j++;
   coneMesh.scale.y += 0.4;
 }
+function keepGoing() {
+  coneMesh.material.map.offset.x += 0.004;
+  coneMesh.material.map.offset.y += 0.005;
+};
 function animate() {
   if(run) {
     if (i < 100) {
@@ -60,6 +64,9 @@ function animate() {
     else {
       if (j < 75) {
         start();
+      }
+      else {
+          keepGoing();
       }
     }
   }
